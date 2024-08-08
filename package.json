@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "curve-matcher": "^1.1.1"
+  }
+}
