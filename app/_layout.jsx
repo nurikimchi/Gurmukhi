@@ -6,12 +6,26 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { Gesture, GestureHandlerRootView } from "react-native-gesture-handler";
 
+import 'react-native-svg'
+import 'react-native-gesture-handler';
+
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
+
+import GestureScreen from './GestureScreen';
+
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+
+//   const ExampleWithHoc = gestureHandlerRootHOC(() => (
+//     <View>
+//       <DraggableBox />
+//     </View>
+//   );
+// );
 
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
@@ -29,14 +43,15 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    // <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack>
-        <Stack.Screen name="(tabs)/index" />
+        <Stack.Screen name="index" />
         <Stack.Screen name="feature"/>
+        {/* component={GestureScreen} */}
         <Stack.Screen name="profile"/>
         <Stack.Screen name="settings"/>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
-    </GestureHandlerRootView>
+    // </GestureHandlerRootView>
   );
 }
