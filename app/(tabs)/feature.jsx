@@ -101,6 +101,8 @@ export default function Feature() {
         });
     }
 
+    // nuri was here
+
     return (
         <>
             <View style={{ position: 'relative', height: 100, width: 100 }}>
