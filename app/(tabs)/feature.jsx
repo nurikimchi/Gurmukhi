@@ -8,6 +8,8 @@ console.log(ਕ)
 
 import 'react-native-gesture-handler';
 
+// nuri was here 2
+
 export default function Feature() {
     const canvasRef = useRef(null);
 
