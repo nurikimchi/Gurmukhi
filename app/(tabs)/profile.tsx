@@ -1,25 +1,49 @@
-import { Text, View, Node } from "react-native";
+import { Text, View, Node, StyleSheet, Image } from "react-native";
 import React from "react";
-import ReactDOM from "react-dom";
-import "./style.css";
+import { GlobalStyles } from "../GlobalStyles";
 
 export default function Profile() {
   return (
-    <div>
-      <h2 className="profile-head">Profile</h2>
+    <View
+      style={{
+        margin: 0,
+        height: 30,
+      }}>
+      <Text style={GlobalStyles.header}>
+        Profile
+      </Text>
+      <View style={{alignItems: "center",}}>
+        <Image style={{
+          margin: 50,
+          padding: 60,
+          flex: 1,
+          alignItems: "center",
+        }} 
+          source={{
+          uri:'../app/profile.png',
+        }}/>
+      </View>
       <View
         style={{
+          margin: 0,
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
+          fontSize: 20,
+          padding: 30,
         }}>
-        <img src="../app/profile.png" className="profile-icon" />
-        <main className="profile">
-          <h3>Name</h3>
-          <h3>Email</h3>
-          <h3>Username</h3>
-        </main>
+        <View>
+          <Text style={GlobalStyles.textBox}>
+            Name
+          </Text>
+          <Text style={GlobalStyles.textBox}>
+            Email
+          </Text>
+          <Text style={GlobalStyles.textBox}>
+            Username
+          </Text>
+        </View>
       </View>
-    </div>
+    </View>
   );
 }
