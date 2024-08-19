@@ -2,6 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "jsx": "react-jsx",
     "paths": {
       "@/*": [
         "./*"
@@ -12,6 +13,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "app/GlobalStyles.js"  ]
+    "expo-env.d.ts",
+    "app/GlobalStyles.js",
+    "app/(tabs)/feature.jsx",
+    "app/_layout.jsx"
+  ]
+
 }
