@@ -1,4 +1,4 @@
-import { Text, View, Node, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import React from "react";
 import { GlobalStyles } from "../GlobalStyles";
 
@@ -29,7 +29,6 @@ export default function Profile() {
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-          fontSize: 20,
           padding: 30,
         }}>
         <View>

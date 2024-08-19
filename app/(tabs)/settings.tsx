@@ -37,7 +37,7 @@ export default function Settings() {
             color="#c6bccc"
           />
           <Modal visible={isModalVisible}>
-            <View style={{ flex: 1, backgroundColor: "white", padding: 60, fontSize:14,}}>
+            <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}> {/* fontSize: 14 */}
               <Text style={GlobalStyles.text}>
                 {text}
               </Text>
@@ -83,10 +83,11 @@ export default function Settings() {
             color="tomato"
           />
           <Modal visible={isModalVisible3}>
-            <View style={{ flex: 1, backgroundColor: "white", padding: 60, fontSize:14,}}>
-              <Text style={GlobalStyles.text}>
+            <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}> {/* fontSize: 14 */}
+              <Text style={GlobalStyles.text}> 
                 Are you sure you want to logout?
-              </Text>
+              </Text> 
+              
               <Button
                 title="Logout"
                 color="tomato"

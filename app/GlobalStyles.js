@@ -22,7 +22,7 @@ export const GlobalStyles = StyleSheet.create(
       color: "whitesmoke",
       backgroundColor: "#866a86",
       fontSize: 16,
-      fontWeight: 350,
+      // fontWeight: 350,
       padding: 15,
       paddingBottom: 35,
       borderRadius: 10,
