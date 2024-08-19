@@ -1,11 +1,9 @@
-import React from "react";
 import Navbar from "../Navbar";
-import Button from "../Button";
 import AnimatedProgress from "../AnimatedProgress"
 import Cards from "../Cards";
 
 import "./style.css";
-import { Text, View, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native";
 
 
 export default function Index(){
@@ -14,19 +12,10 @@ export default function Index(){
   }
 
   return(
-    <View>
+    <SafeAreaView style={{padding: 20}}>
       <Navbar />
-      <AnimatedProgress />
-      <Cards />
-      
-        <View 
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        >
-        </View>
-    </View>
+        <AnimatedProgress />
+        <Cards />
+    </SafeAreaView>
   )
 }

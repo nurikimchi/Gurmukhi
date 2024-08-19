@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Text, View, Button, Modal, Switch, StyleSheet, Image } from "react-native";
 import React from "react";
 import { GlobalStyles } from "../GlobalStyles";
+import { TouchableOpacity } from "react-native";
 
 export default function Settings() {
 
@@ -17,7 +18,6 @@ export default function Settings() {
     } else {
       setText('Notifications On')
     }
-
     setIsToggled(previousState => !previousState)
   }
 
@@ -31,36 +31,37 @@ export default function Settings() {
       </Text>
       <View style={{padding: 20,}}>
         <View>
-          <Button
-            title="Notifications"
-            onPress={() => setIsModalVisible(true)}
-            color="#c6bccc"
-          />
-          <Modal visible={isModalVisible}>
-            <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}> {/* fontSize: 14 */}
-              <Text style={GlobalStyles.text}>
-                {text}
-              </Text>
-              <Switch 
-                trackColor={{false: 'gray', true: '#d481d4'}}
-                thumbColor={isToggled ? 'white' : 'white'}
-                onValueChange={toggleSwitch}
-                value={isToggled}
-              />
-              <Text>{"\n"}</Text>
-              <Button
-                title="Back"
-                color="#c6bccc"
-                onPress={() => setIsModalVisible(false)}
-              />
-            </View>
-          </Modal>
+        <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+        <Text style={{color: '#c6bccc'}}>
+          Notifications
+        </Text>
+      </TouchableOpacity>
 
-          <Button
-            title="Gurmukhi Tips"
-            onPress={() => setIsModalVisible2(true)}
-            color="#c6bccc"
+      <Modal visible={isModalVisible}>
+        <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}>
+          <Text style={GlobalStyles.text}>
+            Switch
+          </Text>
+          <Switch 
+            trackColor={{false: 'gray', true: '#d481d4'}}
+            thumbColor={isToggled ? 'white' : 'black'}
+            onValueChange={toggleSwitch}
+            value={isToggled}
           />
+          <TouchableOpacity onPress={() => setIsModalVisible(false)}>
+            <Text style={{color: '#c6bccc'}}>
+              Back
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+
+          <TouchableOpacity onPress={() => setIsModalVisible2(true)}>
+            <Text style={{color: '#c6bccc'}}>
+              Gurmukhi Tips
+            </Text>
+          </TouchableOpacity>
+
           <Modal visible={isModalVisible2}>
             <View style={{ flex: 1, backgroundColor: "white", padding: 60}}>
               <Text style={GlobalStyles.text}>
@@ -69,21 +70,20 @@ export default function Settings() {
                 2.{"\n"}
                 3.{"\n"}
               </Text>
-              <Button
-                title="Back"
-                color="#c6bccc"
-                onPress={() => setIsModalVisible2(false)}
-              />
+              <TouchableOpacity onPress={() => setIsModalVisible2(false)}>
+                <Text style={{color: '#c6bccc'}}>Back</Text>
+              </TouchableOpacity>
             </View>
           </Modal>
 
-          <Button
-            title="Logout"
-            onPress={() => setIsModalVisible3(true)}
-            color="tomato"
-          />
+          <TouchableOpacity onPress={() => setIsModalVisible3(true)}>
+              <Text style={{color: "tomato"}}>
+                Logout
+              </Text>
+          </TouchableOpacity>
+            
           <Modal visible={isModalVisible3}>
-            <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}> {/* fontSize: 14 */}
+            <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}>
               <Text style={GlobalStyles.text}> 
                 Are you sure you want to logout?
               </Text> 

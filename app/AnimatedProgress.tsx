@@ -5,7 +5,7 @@ const { width } = Dimensions.get('screen');
 
 const AnimatedProgress: FunctionComponent = () => {
     return (
-        <View style={styles.barWrapper}>
+        <View style={styles.barContainer}>
             <ProgressBar />
         </View>
     );
@@ -13,7 +13,7 @@ const AnimatedProgress: FunctionComponent = () => {
 
 const ProgressBar: FunctionComponent = () => {
     const barWidth = React.useRef(new Animated.Value(0)).current;
-    const finalWidth = width * 0.4; 
+    const finalWidth = width; 
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
@@ -46,15 +46,16 @@ const ProgressBar: FunctionComponent = () => {
 const styles = StyleSheet.create({
     progressWrapper: {
         alignItems: 'center',
-        paddingHorizontal: 20, 
+        paddingHorizontal: 20,
+        justifyContent: 'center',
     },
     barContainer: {
         width: '100%',
         maxWidth: 300, 
-        backgroundColor: 'white',
         borderRadius: 15,
         overflow: 'hidden',
         marginTop: 5, 
+        marginHorizontal: 'auto' 
     },
     progressBar: {
         backgroundColor: 'purple',

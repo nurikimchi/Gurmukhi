@@ -38,5 +38,36 @@ export const GlobalStyles = StyleSheet.create(
       color: "gray",
       fontWeight: "bold",
     },
+    navbar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: 20,
+      marginBottom: 10
+    },
+    navbarAppTitle: {
+      fontSize: 30,
+    },
+    progressBarWrapper: {
+      padding: 20,
+      width: '100%',
+    },
+    cardScrollView: {
+      paddingHorizontal: 20,
+      flex: 1,
+      marginVertical: 25
+    },
+    cardGridContainer: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+    },
+    card: {
+      width: '45%',
+      height: 200,
+      margin: 8,
+      padding: 20,
+      borderRadius: 8,
+      backgroundColor: '#add8e6',
+    }
   }
 )
