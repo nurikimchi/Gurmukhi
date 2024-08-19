@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Text, View, Button, Modal, Switch } from "react-native";
+import { Text, View, Button, Modal, Switch, StyleSheet, Image } from "react-native";
 import React from "react";
-import ReactDOM from "react-dom";
+import { GlobalStyles } from "../GlobalStyles";
 
 export default function Settings() {
 
@@ -22,9 +22,14 @@ export default function Settings() {
   }
 
   return (
-    <div>
-      <h2 className="settings-head" >Settings</h2>
-      <div className="settings">
+    <View 
+      style={{
+        margin: 0,
+      }}>
+      <Text style={GlobalStyles.header}>
+        Settings
+      </Text>
+      <View style={{padding: 20,}}>
         <View>
           <Button
             title="Notifications"
@@ -32,8 +37,8 @@ export default function Settings() {
             color="#c6bccc"
           />
           <Modal visible={isModalVisible}>
-            <View style={{ flex: 1, backgroundColor: "white", padding: 60}}>
-              <Text style={{fontWeight:'bold', margain:20, padding:10}}>
+            <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}> {/* fontSize: 14 */}
+              <Text style={GlobalStyles.text}>
                 {text}
               </Text>
               <Switch 
@@ -42,8 +47,7 @@ export default function Settings() {
                 onValueChange={toggleSwitch}
                 value={isToggled}
               />
-              <br />
-              <br />
+              <Text>{"\n"}</Text>
               <Button
                 title="Back"
                 color="#c6bccc"
@@ -59,15 +63,11 @@ export default function Settings() {
           />
           <Modal visible={isModalVisible2}>
             <View style={{ flex: 1, backgroundColor: "white", padding: 60}}>
-              <Text style={{fontWeight:'bold', margain:20, padding:20}}>
-                Here are some tips to support your learning: 
-                <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
+              <Text style={GlobalStyles.text}>
+                Here are some tips to support your learning:{"\n"} 
+                1.{"\n"}
+                2.{"\n"}
+                3.{"\n"}
               </Text>
               <Button
                 title="Back"
@@ -83,10 +83,10 @@ export default function Settings() {
             color="tomato"
           />
           <Modal visible={isModalVisible3}>
-            <View style={{ flex: 1, backgroundColor: "white", padding: 60}}>
-              <Text style={{fontWeight:'bold', margain:20, padding:10}}>
+            <View style={{ flex: 1, backgroundColor: "white", padding: 60 }}> {/* fontSize: 14 */}
+              <Text style={GlobalStyles.text}> 
                 Are you sure you want to logout?
-              </Text>
+              </Text> 
               <Button
                 title="Logout"
                 color="tomato"
@@ -100,7 +100,7 @@ export default function Settings() {
             </View>
           </Modal>
         </View>
-      </div>
-    </div>
+      </View>
+    </View>
   );
 }
