@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+}
+
+.profile-head {
+    align-items: center;
+    font-family:system-ui;
+    font-weight: 400;
+    margin: 0px;
+    height: 30px;
+    color: gray;
+    font-size: 60;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.profile-icon {
+    width: 225px;
+    padding-top: 50px;
+    padding-bottom: 5px;
+    flex: 1;
+}
+
+.profile > h3 {
+    font-family:system-ui;
+    color: whitesmoke;
+    font-size: 60;
+    font-weight: 400;
+    background-color:#866a86;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.settings-head {
+    align-items: center;
+    font-family:system-ui;
+    font-weight: 400;
+    margin: 0px;
+    height: 30px;
+    color: gray;
+    font-size: 60;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.settings {
+    padding: 20px;
+}

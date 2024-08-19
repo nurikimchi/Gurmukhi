@@ -87,7 +87,6 @@ export default function Settings() {
               <Text style={GlobalStyles.text}> 
                 Are you sure you want to logout?
               </Text> 
-              
               <Button
                 title="Logout"
                 color="tomato"
