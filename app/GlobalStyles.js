@@ -60,6 +60,8 @@ export const GlobalStyles = StyleSheet.create(
     cardGridContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     card: {
       width: '45%',
@@ -68,6 +70,7 @@ export const GlobalStyles = StyleSheet.create(
       padding: 20,
       borderRadius: 8,
       backgroundColor: '#add8e6',
+      flexGrow: 'true'
     }
   }
 )

@@ -115,9 +115,9 @@ export default function Feature() {
                         width={100}
                         style={{ backgroundColor: 'transparent', position: 'relative', top: 0, left: 0, zIndex: 100 }}
                     />
-                    {globalCounter >= ਕ.length ? <></> : <Button title="Get Path" onPress={handleGetPath} />}
                 </View>            
-                {/* <Text>
+                {globalCounter >= ਕ.length ? <></> : <Button title="Get Path" onPress={handleGetPath} />}
+                {/* <Text> 
                     {status}
                 </Text> */}
             </View>
