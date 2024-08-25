@@ -14,23 +14,19 @@ import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import GestureScreen from './GestureScreen';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useRouter, useSegments, Slot } from "expo-router";
+
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-
-//   const ExampleWithHoc = gestureHandlerRootHOC(() => (
-//     <View>
-//       <DraggableBox />
-//     </View>
-//   );
-// );
-
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     if (loaded) {
@@ -38,20 +34,25 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
+  useEffect(() => {
+    router.replace('/signin');
+  }, [loaded]);
+
   if (!loaded) {
     return null;
   }
 
   return (
-    // <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack>
+        <Slot/>
         <Stack.Screen name="index" />
         <Stack.Screen name="feature"/>
-        {/* component={GestureScreen} */}
         <Stack.Screen name="profile"/>
         <Stack.Screen name="settings"/>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="signin"/>
       </Stack>
-    // </GestureHandlerRootView>
+    </GestureHandlerRootView>
   );
 }
