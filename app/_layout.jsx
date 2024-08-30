@@ -16,6 +16,9 @@ import GestureScreen from './GestureScreen';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useRouter, useSegments, Slot } from "expo-router";
 
+import Index from './(tabs)/index'
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,11 +34,8 @@ export default function RootLayout() {
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
+      router.replace('/signin');
     }
-  }, [loaded]);
-
-  useEffect(() => {
-    router.replace('/signin');
   }, [loaded]);
 
   if (!loaded) {
@@ -43,16 +43,20 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Stack>
-        <Slot/>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="feature"/>
-        <Stack.Screen name="profile"/>
-        <Stack.Screen name="settings"/>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="signin"/>
-      </Stack>
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Stack>
+          <Slot/>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="feature"/>
+          <Stack.Screen name="profile"/>
+          <Stack.Screen name="settings"/>
+          <Stack.Screen name="leaderboard"/>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="signin" options={{title: 'Sign In'}}/>
+          <Stack.Screen name="signup" options={{title: 'Sign Up'}}/>
+        </Stack>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
