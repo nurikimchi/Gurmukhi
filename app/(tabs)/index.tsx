@@ -13,7 +13,6 @@ export default function Index(){
 
   return(
     <SafeAreaView style={{padding: 20}}>
-      <Navbar />
         <AnimatedProgress />
         <Cards />
     </SafeAreaView>

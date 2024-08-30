@@ -26,9 +26,6 @@ export default function Settings() {
       style={{
         margin: 0,
       }}>
-      <Text style={GlobalStyles.header}>
-        Settings
-      </Text>
       <View style={{padding: 20,}}>
         <View>
         <TouchableOpacity onPress={() => setIsModalVisible(true)}>

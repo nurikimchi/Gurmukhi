@@ -9,9 +9,6 @@ export default function Profile() {
         margin: 0,
         height: 30,
       }}>
-      <Text style={GlobalStyles.header}>
-        Profile
-      </Text>
       <View style={{alignItems: "center",}}>
         <Image style={{
           margin: 50,
