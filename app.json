@@ -10,11 +10,11 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#29B1EB"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.gurumkhiiOS"
+      "bundleIdentifier": "com.hackclub.gurmukhi"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,6 +33,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "288b35cb-b2b9-408e-842a-5aa496480dd2"
+      }
     }
   }
 }
