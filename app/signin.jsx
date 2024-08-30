@@ -1,16 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from './GlobalStyles';
 import { useRouter, useSegments } from "expo-router";
 
-export default function signin() {
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, addDoc, setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { auth_signin_password } from '../db_utils/auth_signin_password'
+
+import { auth, db } from '../firebaseConfig'
+
+export default function SignIn() {
+
     const router = useRouter();
 
-    function handleSuccessfulsignIn() {
-        router.navigate('/')
-    }
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
+    const [errorExists, setErrorExists] = useState(false);
+    const [errorMessageUI, setErrorMessageUI] = useState('');
+    
+    const handleSignIn = async (email, password) => {
+        try {
+          const user = await auth_signin_password(email, password);
+          if (user.errorCode) {
+            console.log("Error:", user.errorCode, user.errorMessage);
+
+            setErrorExists(true);
+            switch(user.errorCode) {
+                case 'auth/invalid-credential':
+                    setErrorMessageUI('These credentials don\'t match our records.');
+                    break;
+                default:
+                    setErrorMessageUI('Something went wrong');
+            }
+            
+          } else {
+            console.log("Signed in user:", user);
+
+            router.navigate('/');
+          }
+        } catch (error) {
+          console.error("Unexpected error:", error);
+        }
+      };
+
+    const handleRedirectSignUp = async (email, password) => {
+        router.navigate('/signup');
+    }
+      
     return (
+
         <View style={GlobalStyles.signInContainer}>
         <View style={GlobalStyles.signInInnerContainer}>
             {/* <Image
@@ -26,11 +65,12 @@ export default function signin() {
             <View style={GlobalStyles.signInFormField}>
                 <Text style={GlobalStyles.signInLabel}>Email address</Text>
                 <TextInput
-                style={GlobalStyles.signInInput}
-                placeholder="Email address"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCompleteType="email"
+                    style={!errorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
+                    placeholder="Email address"
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCompleteType="email"
+                    onChangeText={text => setEmail(text)}
                 />
             </View>
 
@@ -42,17 +82,31 @@ export default function signin() {
                     </TouchableOpacity>
                 </View>
                 <TextInput
-                    style={GlobalStyles.signInInput}
+                    style={!errorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
                     placeholder="Password"
                     secureTextEntry
                     autoCapitalize="none"
                     autoCompleteType="password"
+                    onChangeText={text => setPassword(text)}
                 />
+                <Text style={GlobalStyles.signInErrorMessage}>
+                    {`${errorMessageUI}`}
+                </Text>
             </View>
 
-            <TouchableOpacity style={GlobalStyles.signInSubmitButton} onPress={handleSuccessfulsignIn}>
+
+            <TouchableOpacity style={GlobalStyles.signInSubmitButton} onPress={() => {handleSignIn(email, password)}}>
                 <Text style={{ color: '#FFFFFF' }}>Sign in</Text>
             </TouchableOpacity>
+
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 40 }}>
+                <Text style={GlobalStyles.signInNoAccount}>
+                    Don't have an account?{' '}
+                </Text>
+                <TouchableOpacity onPress={handleRedirectSignUp}>
+                    <Text style={GlobalStyles.signInNoAccountLink}>Sign up</Text>
+                </TouchableOpacity>
+            </View>
             </View>
         </View>
         </View>
