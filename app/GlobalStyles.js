@@ -117,7 +117,7 @@ export const GlobalStyles = StyleSheet.create(
       paddingLeft: 8,
       borderRadius: 8,
       backgroundColor: '#FFFFFF', // white background
-      color: '#1F2937', // text-gray-900
+      color: '#1F2937', // red
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.1,
@@ -246,5 +246,121 @@ export const GlobalStyles = StyleSheet.create(
       // right: -4, // Slightly outside the right of the image
       transform: [{ translateX: 18 }, { translateY: 18 }],
     },
+    profileContainer: {
+      flex: 1,
+    },
+    profileHeader: {
+      borderBottomWidth: 1,
+      borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+    },
+    profileHeading: {
+      // color: 'white',
+      fontSize: 24,
+      fontWeight: '600',
+    },
+    profileContent: {
+      flex: 1,
+      paddingHorizontal: 24,
+      paddingVertical: 24,
+      marginTop: 14
+    },
+    profileSection: {
+      marginBottom: 72,
+    },
+    profileSectionTitle: {
+      // color: 'white',
+      fontSize: 18,
+      fontWeight: '600',
+    },
+    profileSectionSubtitle: {
+      color: 'rgba(156, 163, 175, 1)',
+      fontSize: 14,
+      marginTop: 4,
+    },
+    profileForm: {
+      marginTop: 16,
+    },
+    profileFormGroup: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 32,
+    },
+    profileAvatar: {
+      width: 96,
+      height: 96,
+      borderRadius: 8,
+      backgroundColor: '#2d2d2d',
+    },
+    profileButton: {
+      // backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backgroundColor: '#6366F1',
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+      borderRadius: 4,
+      marginLeft: 16,
+    },
+    profileButtonText: {
+      color: 'white',
+      fontSize: 14,
+      fontWeight: '600',
+    },
+    profileImageNote: {
+      color: 'rgba(156, 163, 175, 1)',
+      fontSize: 12,
+      marginTop: 8,
+    },
+    profileInputGroup: {
+      marginBottom: 16,
+    },
+    profileLabel: {
+      // color: 'white',
+      fontSize: 14,
+      fontWeight: '500',
+      marginBottom: 4,
+    },
+    profileInput: {
+      // backgroundColor: '#2d2d2d',
+      borderColor: '#2d2d2d',
+      borderWidth: 1,
+      // color: 'white',
+      paddingHorizontal: 8,
+      paddingVertical: 12,
+      borderRadius: 4,
+      fontSize: 14,
+    },
+    profileInputError: {
+      // backgroundColor: '#2d2d2d',
+      borderColor: '#c30010',
+      borderWidth: 1,
+      // color: 'white',
+      paddingHorizontal: 8,
+      paddingVertical: 12,
+      borderRadius: 4,
+      fontSize: 14,
+    },
+    profileFormActions: {
+      marginTop: 24,
+    },
+    profileSaveButton: {
+      backgroundColor: '#6366F1',
+      paddingVertical: 12,
+      paddingHorizontal: 24,
+      borderRadius: 4,
+    },
+    profileSaveButtonText: {
+      color: 'white',
+      fontSize: 14,
+      fontWeight: '600',
+      textAlign: 'center',
+    },
+    profileDeleteButton: {
+      backgroundColor: 'rgb(221, 82, 76)',
+      paddingVertical: 12,
+      paddingHorizontal: 24,
+      borderRadius: 4,
+      width: '70%'
+    }
   }
 )
