@@ -14,10 +14,10 @@ export default function Cards() {
                     {["Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5", "Lesson 6", "Lesson 7", "Lesson 8"].map((lesson, index) => (
                         <View style={GlobalStyles.card} key={index}> 
                         {/* styles[`card${index + 1}`] */}
-                            <Text>{lesson}</Text>
-                            <TouchableOpacity onPress={() => handleContinue(lesson)}>
+                            <Text style={GlobalStyles.lsnText}>{lesson}</Text>
+                            <TouchableOpacity style={GlobalStyles.button} onPress={() => handleContinue(lesson)}>
                             {/* <a href="/feature"> </a> */}
-                                <Text>Continue</Text>
+                                <Text style={GlobalStyles.buttonText}>Continue</Text>
                             </TouchableOpacity>
                         </View>
                     ))}

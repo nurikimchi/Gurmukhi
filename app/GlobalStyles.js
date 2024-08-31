@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 
 export const GlobalStyles = StyleSheet.create(
   {
@@ -23,6 +23,7 @@ export const GlobalStyles = StyleSheet.create(
       color: "gray",
       fontWeight: "bold",
     },
+
     navbar: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -30,24 +31,29 @@ export const GlobalStyles = StyleSheet.create(
       paddingHorizontal: 20,
       marginBottom: 10
     },
+
     navbarAppTitle: {
       fontSize: 30,
     },
+
     progressBarWrapper: {
       padding: 20,
       width: '100%',
     },
+
     cardScrollView: {
       paddingHorizontal: 20,
       flex: 1,
       marginVertical: 25
     },
+
     cardGridContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'center',
       justifyContent: 'center',
     },
+
     card: {
       width: '45%',
       height: 200,

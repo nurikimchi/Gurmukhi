@@ -1,11 +1,12 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Animated, Dimensions, StyleSheet, Text, View } from 'react-native';
+import { GlobalStyles } from './GlobalStyles';
 
 const { width } = Dimensions.get('screen');
 
 const AnimatedProgress: FunctionComponent = () => {
     return (
-        <View style={styles.barContainer}>
+        <View style={GlobalStyles.barContainer}>
             <ProgressBar />
         </View>
     );
@@ -34,40 +35,17 @@ const ProgressBar: FunctionComponent = () => {
     }, [finalWidth]);
 
     return (
-        <View style={styles.progressWrapper}>
-            <Text style={styles.progressText}>{`Progress: ${progress}%`}</Text>
-            <View style={styles.barContainer}>
-                <Animated.View style={[styles.progressBar, { width: barWidth }]} />
+        <View style={GlobalStyles.progressWrapper}>
+            <Text style={GlobalStyles.progressText}>{`Progress: ${progress}%`}</Text>
+            <View style={GlobalStyles.barContainer}>
+                <Animated.View style={[GlobalStyles.progressBar, { width: barWidth }]} />
             </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    progressWrapper: {
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        justifyContent: 'center',
-    },
-    barContainer: {
-        width: '100%',
-        maxWidth: 300, 
-        borderRadius: 15,
-        overflow: 'hidden',
-        marginTop: 5, 
-        marginHorizontal: 'auto' 
-    },
-    progressBar: {
-        backgroundColor: 'purple',
-        height: 20, 
-        borderRadius: 15,
-    },
-    progressText: {
-        fontSize: 14, 
-        fontWeight: 'bold',
-        marginBottom: 5, 
-        textAlign: 'center', 
-    },
+    
 });
 
 export default AnimatedProgress;
