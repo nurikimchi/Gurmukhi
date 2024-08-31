@@ -2,21 +2,6 @@ import { Button, StyleSheet } from "react-native";
 
 export const GlobalStyles = StyleSheet.create(
   {
-    header: {
-      fontSize: 18,
-      margin: 0,
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      fontWeight: 400,
-      color: "gray",
-      backgroundColor: "white",
-      padding: 50,
-      paddingBottom: 40,
-      textAlign: "center",
-      fontFamily: "system-ui",
-    },
-
     textBox: {
       fontFamily: "system-ui",
       color: "whitesmoke",
@@ -65,6 +50,8 @@ export const GlobalStyles = StyleSheet.create(
     cardGridContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
 
     card: {
@@ -74,56 +61,312 @@ export const GlobalStyles = StyleSheet.create(
       padding: 20,
       borderRadius: 8,
       backgroundColor: '#add8e6',
+      flexGrow: 'true'
     },
-
-    button: {
-      backgroundColor: '#4682b4',
-      borderColor: 'white',
-      borderWidth: 2,
-      padding: 1,
-      borderRadius: 19,
-      width: 100,
-      height: 27,
-    },
-
-    buttonText: {
-      color: 'white',
-      fontSize: 16,
-      fontWeight: 'small',
-      textAlign: "center",
-    },
-
-    lsnText: {
-     color: 'black', 
-     fontSize: 15,
-    },
-
-    barContainer: {
-      width: '100%',
-      maxWidth: 300, 
-      borderRadius: 15,
-      overflow: 'hidden',
-      marginTop: 5, 
-      marginHorizontal: 'auto' 
-  },
-
-    progressWrapper: {
-      alignItems: 'center',
-      paddingHorizontal: 20,
+    signInContainer: {
+      flex: 1,
       justifyContent: 'center',
-  },
-
-    progressBar: {
-      backgroundColor: '#4682b4',
-      height: 20, 
-      borderRadius: 15,
-  },
-
-    progressText: {
-    fontSize: 14, 
-    fontWeight: 'bold',
-    marginBottom: 5, 
-    textAlign: 'center', 
-  },
-}
+      paddingHorizontal: 24,
+      paddingVertical: 48,
+      marginBottom: 64
+    },
+    signInInnerContainer: {
+      alignSelf: 'center',
+      width: '100%',
+      maxWidth: 400,
+    },
+    signInLogo: {
+      alignSelf: 'center',
+      height: 40,
+      width: 'auto',
+    },
+    signInHeading: {
+      marginTop: 40,
+      textAlign: 'center',
+      fontSize: 24,
+      fontWeight: 'bold',
+      lineHeight: 36,
+      color: '#1F2937', // text-gray-900
+    },
+    signInForm: {
+      marginTop: 40,
+    },
+    signInFormField: {
+      marginBottom: 24,
+    },
+    signInLabel: {
+      fontSize: 14,
+      fontWeight: '500',
+      lineHeight: 24,
+      color: '#1F2937', // text-gray-900
+    },
+    signInInput: {
+      marginTop: 8,
+      width: '100%',
+      paddingVertical: 6,
+      paddingLeft: 8,
+      borderRadius: 8,
+      backgroundColor: '#FFFFFF', // white background
+      color: '#1F2937', // text-gray-900
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.1,
+      shadowRadius: 3,
+      elevation: 1,
+      borderWidth: 1,
+      borderColor: '#D1D5DB', // ring-gray-300
+    },
+    signInInputError: {
+      marginTop: 8,
+      width: '100%',
+      paddingVertical: 6,
+      paddingLeft: 8,
+      borderRadius: 8,
+      backgroundColor: '#FFFFFF', // white background
+      color: '#1F2937', // red
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.1,
+      shadowRadius: 3,
+      elevation: 1,
+      borderWidth: 1,
+      borderColor: '#c30010', // ONLY DIFFERENCE
+    },
+    signInErrorMessage: {
+      height: 16,
+      fontSize: 14,
+      fontWeight: 200,
+      color: '#c30010',
+      marginTop: 8
+    }, 
+    signInForgotPasswordLink: {
+      fontSize: 14,
+      fontWeight: 600,
+      color: '#4F46E5', // text-indigo-600
+    },
+    signInSubmitButton: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 8,
+      backgroundColor: '#4F46E5', // bg-indigo-600
+      paddingVertical: 6,
+      paddingHorizontal: 12,
+      fontSize: 14,
+      fontWeight: '600',
+      color: '#FFFFFF', // text-white
+    },
+    signInNoAccount: {
+      // textAlign: 'center',
+      fontSize: 14,
+      color: '#6B7280', // text-gray-500
+      fontWeight: '600',
+      lineHeight: 24
+    },
+    signInNoAccountLink: {
+      fontWeight: '600',
+      color: '#4F46E5', // text-indigo-600
+      fontSize: 14
+    },
+    leaderboardListItem: {
+      paddingVertical: 16,  // equivalent to `py-4`
+      paddingHorizontal: 16,  // equivalent to `px-4`
+      borderBottomWidth: 1,  // equivalent to `divide-y`
+      borderBottomColor: '#E5E7EB',  // equivalent to `divide-gray-200`
+      display: 'flex',
+      flexDirection: 'row',
+      alignContent: 'space-between'
+      // alignContent: 'center',
+      // justifyContent: 'center'
+    },
+    leaderboardTop3Number: {
+      color: 'white',
+    },
+    avatarContainer: {
+      position: 'relative',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 'auto'
+    },
+    avatarImage: {
+      height: 24, // h-6 in Tailwind is 24px
+      width: 24, // w-6 in Tailwind is 24px
+      borderRadius: 4, // rounded-md in Tailwind
+    },
+    avatarBadgeContainer: {
+      position: 'absolute',
+      bottom: -4, // Slightly outside the bottom of the image
+      right: -4, // Slightly outside the right of the image
+      transform: [{ translateX: 12 }, { translateY: 12 }], // translate-x-1/2 and translate-y-1/2 in Tailwind
+      borderRadius: 3, // Large enough for full roundness
+      borderWidth: 5, // border-2 in Tailwind
+      borderColor: 'white',
+      backgroundColor: 'transparent', // Ensure background is transparent
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    avatarBadgeReg: {
+      height: 16, // h-1.5 in Tailwind is 6px
+      width: 16, // w-1.5 in Tailwind is 6px
+      borderRadius: 3, // rounded-full in Tailwind
+      backgroundColor: '#d1d5db', // bg-gray-300 in Tailwind
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute',
+      // bottom: -4, // Slightly outside the bottom of the image
+      // right: -4, // Slightly outside the right of the image
+      transform: [{ translateX: 18 }, { translateY: 18 }],
+    },
+    avatarBadgeGold: {
+      height: 20, // h-1.5 in Tailwind is 6px
+      width: 20, // w-1.5 in Tailwind is 6px
+      borderRadius: 3, // rounded-full in Tailwind
+      backgroundColor: '#FFD700', // bg-gray-300 in Tailwind
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute',
+      // bottom: -4, // Slightly outside the bottom of the image
+      // right: -4, // Slightly outside the right of the image
+      transform: [{ translateX: 18 }, { translateY: 18 }],
+    },
+    avatarBadgeSilver: {
+      height: 20, // h-1.5 in Tailwind is 6px
+      width: 20, // w-1.5 in Tailwind is 6px
+      borderRadius: 3, // rounded-full in Tailwind
+      backgroundColor: '#C0C0C0', // bg-gray-300 in Tailwind
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute',
+      // bottom: -4, // Slightly outside the bottom of the image
+      // right: -4, // Slightly outside the right of the image
+      transform: [{ translateX: 18 }, { translateY: 18 }],
+    },
+    avatarBadgeBronze: {
+      height: 20, // h-1.5 in Tailwind is 6px
+      width: 20, // w-1.5 in Tailwind is 6px
+      borderRadius: 3, // rounded-full in Tailwind
+      backgroundColor: '#CD7F32', // bg-gray-300 in Tailwind
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute',
+      // bottom: -4, // Slightly outside the bottom of the image
+      // right: -4, // Slightly outside the right of the image
+      transform: [{ translateX: 18 }, { translateY: 18 }],
+    },
+    profileContainer: {
+      flex: 1,
+    },
+    profileHeader: {
+      borderBottomWidth: 1,
+      borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+    },
+    profileHeading: {
+      // color: 'white',
+      fontSize: 24,
+      fontWeight: '600',
+    },
+    profileContent: {
+      flex: 1,
+      paddingHorizontal: 24,
+      paddingVertical: 24,
+      marginTop: 14
+    },
+    profileSection: {
+      marginBottom: 72,
+    },
+    profileSectionTitle: {
+      // color: 'white',
+      fontSize: 18,
+      fontWeight: '600',
+    },
+    profileSectionSubtitle: {
+      color: 'rgba(156, 163, 175, 1)',
+      fontSize: 14,
+      marginTop: 4,
+    },
+    profileForm: {
+      marginTop: 16,
+    },
+    profileFormGroup: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 32,
+    },
+    profileAvatar: {
+      width: 96,
+      height: 96,
+      borderRadius: 8,
+      backgroundColor: '#2d2d2d',
+    },
+    profileButton: {
+      // backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backgroundColor: '#6366F1',
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+      borderRadius: 4,
+      marginLeft: 16,
+    },
+    profileButtonText: {
+      color: 'white',
+      fontSize: 14,
+      fontWeight: '600',
+    },
+    profileImageNote: {
+      color: 'rgba(156, 163, 175, 1)',
+      fontSize: 12,
+      marginTop: 8,
+    },
+    profileInputGroup: {
+      marginBottom: 16,
+    },
+    profileLabel: {
+      // color: 'white',
+      fontSize: 14,
+      fontWeight: '500',
+      marginBottom: 4,
+    },
+    profileInput: {
+      // backgroundColor: '#2d2d2d',
+      borderColor: '#2d2d2d',
+      borderWidth: 1,
+      // color: 'white',
+      paddingHorizontal: 8,
+      paddingVertical: 12,
+      borderRadius: 4,
+      fontSize: 14,
+    },
+    profileInputError: {
+      // backgroundColor: '#2d2d2d',
+      borderColor: '#c30010',
+      borderWidth: 1,
+      // color: 'white',
+      paddingHorizontal: 8,
+      paddingVertical: 12,
+      borderRadius: 4,
+      fontSize: 14,
+    },
+    profileFormActions: {
+      marginTop: 24,
+    },
+    profileSaveButton: {
+      backgroundColor: '#6366F1',
+      paddingVertical: 12,
+      paddingHorizontal: 24,
+      borderRadius: 4,
+    },
+    profileSaveButtonText: {
+      color: 'white',
+      fontSize: 14,
+      fontWeight: '600',
+      textAlign: 'center',
+    },
+    profileDeleteButton: {
+      backgroundColor: 'rgb(221, 82, 76)',
+      paddingVertical: 12,
+      paddingHorizontal: 24,
+      borderRadius: 4,
+      width: '70%'
+    }
+  }
 )

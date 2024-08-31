@@ -18,10 +18,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts",
-    "app/GlobalStyles.js",
-    "app/(tabs)/feature.jsx",
-    "app/_layout.jsx"
+    "expo-env.d.ts", "app/(tabs)/profile.jsx",
   ]
-
 }

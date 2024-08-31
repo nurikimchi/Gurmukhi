@@ -1,0 +1,148 @@
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { GlobalStyles } from "./GlobalStyles";
+import { useRouter, useSegments } from "expo-router";
+
+import { auth_signup_password } from "../db_utils/auth_signup_password";
+import { getAuth, updateProfile } from "firebase/auth";
+import { addDoc, collection, setDoc, doc, serverTimestamp } from "firebase/firestore"
+import { db } from "../firebaseConfig";
+
+
+export default function SignUp() {
+	const auth = getAuth();
+
+	const router = useRouter();
+
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("");
+
+    const [errorExists, setErrorExists] = useState(false);
+    const [errorMessageUI, setErrorMessageUI] = useState('');
+    
+	const handleSignUp = async (email, password, username) => {
+		try {
+			const user = await auth_signup_password(email, password, username);
+			if (user.errorCode) {
+				console.log("Error:", user.errorCode, user.errorMessage);
+
+                setErrorExists(true);
+                switch(user.errorCode) {
+                    case 'auth/invalid-email':
+                        setErrorMessageUI('Invalid email');
+                        break;
+                    case 'auth/email-already-in-use':
+                        setErrorMessageUI('Email is already in use');
+                        break;
+                    default:
+                        setErrorMessageUI('Something went wrong');
+                }
+
+			} else {
+				var colors= ['cadetblue', 'coral', 'cornflowerblue', 'darksalmon', 'darkkhaki', 'deepskyblue', ];
+				let avatarColor = colors[Math.floor(Math.random() * colors.length)];
+
+                try {
+                    await setDoc(doc(db, "users", user.uid), {
+                        email: email,
+                        username: username,
+                        uid: user.uid,
+                        exp: 0,
+                        completedLevels: {
+                            '1': false,
+                            '1b': false,
+                            '1c': false,
+                        },
+						ranking: null,
+						avatarColor: avatarColor,
+                        timestamp: serverTimestamp(),
+                    });
+                    console.log('User document created for user:', user.uid);
+
+                    router.navigate('/');
+                    
+                } catch (error) {
+                    console.log(error)
+                }
+            }  
+        } catch {
+
+        }
+    }
+
+	return (
+		<View style={GlobalStyles.signInContainer}>
+			<View style={GlobalStyles.signInInnerContainer}>
+				{/* <Image
+                source={{ uri: '' }}
+                style={GlobalStyles.signInLogo}
+                resizeMode="contain"
+            /> */}
+				<Text style={GlobalStyles.signInHeading}>
+					Create your account
+				</Text>
+			</View>
+
+			<View style={GlobalStyles.signInInnerContainer}>
+				<View style={GlobalStyles.signInForm}>
+					<View style={GlobalStyles.signInFormField}>
+						<Text style={GlobalStyles.signInLabel}>
+							Email address
+						</Text>
+						<TextInput
+							style={!errorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
+							placeholder="Email address"
+							keyboardType="email-address"
+							autoCapitalize="none"
+							autoCompleteType="email"
+							onChangeText={(text) => setEmail(text)}
+						/>
+					</View>
+					<View style={GlobalStyles.signInFormField}>
+						<Text style={GlobalStyles.signInLabel}>Username</Text>
+						<TextInput
+							style={GlobalStyles.signInInput}
+							placeholder="Username"
+							keyboardType="ascii-capable"
+							autoCapitalize="none"
+							autoCompleteType="username"
+							onChangeText={(text) => setUsername(text)}
+						/>
+					</View>
+
+					<View style={GlobalStyles.signInFormField}>
+						<View
+							style={{
+								flexDirection: "row",
+								justifyContent: "space-between",
+								alignItems: "center",
+							}}
+						>
+							<Text style={GlobalStyles.signInLabel}>
+								Password
+							</Text>
+						</View>
+						<TextInput
+							style={GlobalStyles.signInInput}
+							placeholder="Password"
+							secureTextEntry
+							autoCapitalize="none"
+							autoCompleteType="password"
+							onChangeText={(text) => setPassword(text)}
+						/>
+					</View>
+
+					<TouchableOpacity
+						style={GlobalStyles.signInSubmitButton}
+						onPress={() => {
+							handleSignUp(email, password, username);
+						}}
+					>
+						<Text style={{ color: "#FFFFFF" }}>Sign in</Text>
+					</TouchableOpacity>
+				</View>
+			</View>
+		</View>
+	);
+}
