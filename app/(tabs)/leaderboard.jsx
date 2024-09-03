@@ -8,35 +8,32 @@ import { Avatar } from '@rneui/base';
 export default function Leaderboard() {
 
     const [usersDataLB, setUsersDataLB] = useState([]);
-    var topThreeData = [];
+    const [topThreeData, setTopThreeData] = useState([]);
 
-    const findTopThreeExp = (data) => {
-        let sortedData = data.sort((a, b) => b.exp - a.exp).slice(0, 3)
-        console.log("⭐️ ", sortedData)
+    const updateUserRankings = async (data) => {
+        const sortedData = data.sort((a, b) => b.exp - a.exp);
 
-        sortedData.forEach(function callback(value, index) { 
-            topThreeData[index] = value.uid
-
-            updateDoc(doc(db, "users", value.uid), {
+        const topThree = sortedData.slice(0, 3);
+        const topThreeIds = topThree.map((user, index) => {
+            updateDoc(doc(db, "users", user.uid), {
                 ranking: index + 1
-            })
-        })
-
-        console.log("TOP3: ", topThreeData)
-
-        Promise.all(data.map((user) => {
-            if (!topThreeData.includes(user.uid)) {
-                return updateDoc(doc(db, "users", user.uid), {
-                    ranking: null
-                });
-            }
-        })).catch((error) => {
-            console.error(error)
+            });
+            return user.uid;
         });
 
-        console.log(topThreeData)
-        return topThreeData;
+        setTopThreeData(topThreeIds);
+
+        sortedData.forEach((user, index) => {
+            if (!topThreeIds.includes(user.uid)) {
+                updateDoc(doc(db, "users", user.uid), {
+                    ranking: index + 1
+                });
+            }
+        });
+
+        setUsersDataLB(sortedData);
     };
+    
 
     const getAllUsersLB = async () => {
         const q = query(collection(db, "users")); // , where("capital", "==", true
@@ -47,6 +44,7 @@ export default function Leaderboard() {
         querySnapshot.forEach((doc) => {
             const userData = doc.data()
             console.log(doc.id, " => ", doc.data());
+            console.log("USERRRRR DATAAAAA ", userData)
             users.push({
                 ...userData,
                 uid: doc.id,
@@ -54,8 +52,7 @@ export default function Leaderboard() {
                 exp: userData.exp,
             });
         });
-        findTopThreeExp(users)
-        setUsersDataLB(users);
+        updateUserRankings(users)
     } 
 
     useEffect(() => {
