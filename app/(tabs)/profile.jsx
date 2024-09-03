@@ -10,7 +10,7 @@ import {
 	SafeAreaView,
 	ScrollView,
 	TextInput,
-	TouchableOpacity,
+	Pressable,
 	dispatch,
 } from "react-native";
 import {
@@ -176,7 +176,7 @@ export default function Profile() {
 												profileData.avatarColor,
 										}}
 									/>
-									<TouchableOpacity
+									<Pressable
 										style={GlobalStyles.profileButton}
 									>
 										<Text
@@ -186,7 +186,7 @@ export default function Profile() {
 										>
 											Change avatar color
 										</Text>
-									</TouchableOpacity>
+									</Pressable>
 									{/* <Text
 										style={
 											GlobalStyles.profileImageNote
@@ -278,7 +278,7 @@ export default function Profile() {
 								</View>
 
 								<View style={GlobalStyles.profileFormActions}>
-									<TouchableOpacity
+									<Pressable
 										style={GlobalStyles.profileSaveButton}
 										onPress={() =>
 											handleUpdate_User_Email(
@@ -295,7 +295,7 @@ export default function Profile() {
 										>
 											Save
 										</Text>
-									</TouchableOpacity>
+									</Pressable>
 								</View>
 							</View>
 						</View>
@@ -357,7 +357,7 @@ export default function Profile() {
 								</View>
 
 								<View style={GlobalStyles.profileFormActions}>
-									<TouchableOpacity
+									<Pressable
 										style={GlobalStyles.profileSaveButton}
 										// onPress={}
 									>
@@ -368,7 +368,7 @@ export default function Profile() {
 										>
 											Save
 										</Text>
-									</TouchableOpacity>
+									</Pressable>
 								</View>
 							</View>
 						</View> */}
@@ -389,7 +389,7 @@ export default function Profile() {
 							</Text>
 
 							<View style={GlobalStyles.profileFormActions}>
-								<TouchableOpacity
+								<Pressable
 									style={GlobalStyles.profileDeleteButton}
 									onPress={handleDeleteAccount}
 								>
@@ -400,7 +400,7 @@ export default function Profile() {
 									>
 										Yes, delete my account
 									</Text>
-								</TouchableOpacity>
+								</Pressable>
 							</View>
 							{errorExists_deleteAccount == false ? (
 								<Text
