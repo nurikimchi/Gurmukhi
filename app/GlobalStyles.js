@@ -24,44 +24,148 @@ export const GlobalStyles = StyleSheet.create(
       fontWeight: "bold",
     },
 
-    navbar: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-      marginBottom: 10
+    statsTextBase: {
+      fontSize: 24, // 'text-base'
+      fontWeight: '600', // 'font-semibold'
+      lineHeight: 24, // 'leading-6'
+      color: '#111827', // 'text-gray-900'
     },
-
-    navbarAppTitle: {
-      fontSize: 30,
+    statsGridContainer: {
+      marginTop: 20, // 'mt-5'
+      flexDirection: 'column',
+      // flexWrap: 'wrap',
+      justifyContent: 'space-between', // Equivalent to grid layout with gap
     },
-
-    progressBarWrapper: {
-      padding: 20,
-      width: '100%',
+    statsCard: {
+      backgroundColor: '#ffffff', // 'bg-white'
+      borderRadius: 10, // 'rounded-lg'
+      paddingHorizontal: 16, // 'px-4'
+      paddingVertical: 25, // 'py-5' originally 20
+      boxShadow: '#000', // 'shadow'
+      shadowOffset: { width: 0, height: 1 }, // For shadow
+      shadowOpacity: 0.2, // For shadow
+      shadowRadius: 1.41, // For shadow
+      elevation: 2, // For Android shadow
+      marginBottom: 10, // To replicate gap between items
+      flexBasis: '30%', // To replicate sm:grid-cols-3
     },
-
-    cardScrollView: {
-      paddingHorizontal: 20,
-      flex: 1,
-      marginVertical: 25
+    statsCardUpperHalf: {
+      display: 'flex',
+      flexDirection: 'column',
+      marginBottom: 45
     },
-
-    cardGridContainer: {
-      flexDirection: 'row',
+    statsCardTitle: {
+      fontSize: 14, // 'text-sm'
+      fontWeight: '500', // 'font-medium'
+      color: '#6B7280', // 'text-gray-500'
+    },
+    statsCardStat: {
+      marginTop: 4, // 'mt-1'
+      fontSize: 30, // 'text-3xl'
+      fontWeight: '600', // 'font-semibold'
+      letterSpacing: -0.5, // 'tracking-tight'
+      color: '#111827', // 'text-gray-900'
+    },
+    statsLinkContainer: {
+      position: 'absolute',
+      left: 0, right: 0, bottom: 0, // 'inset-x-0 bottom-0'
+      backgroundColor: '#F9FAFB', // 'bg-gray-50'
+      paddingHorizontal: 16, // 'px-4'
+      paddingVertical: 16, // 'py-4'
+      borderRadius: 10
+    },
+    statsLinkText: {
+      fontSize: 14, // 'text-sm'
+      fontWeight: '500', // 'font-medium'
+      color: '#4F46E5', // 'text-indigo-600'
+    },
+    lessonsBgLight: {
+      backgroundColor: '#f0f0f0',
+      paddingVertical: 24,
+    },
+    lessonsContainer: {
+      // marginHorizontal: 'auto',
+      // maxWidth: 1400,
+      // paddingHorizontal: 16,
+      marginTop: 20, // 'mt-5'
+      flexDirection: 'column',
       flexWrap: 'wrap',
+      justifyContent: 'space-between', // Equivalent to grid layout with gap
+    },
+    lessonsHeader: {
+      // marginHorizontal: 'auto',
+      maxWidth: 800,
+    },
+    lessonTitle: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: '#000',
+      // textAlign: 'center',
+    },
+    lessonSubtitle: {
+      marginTop: 12,
+      fontSize: 18,
+      lineHeight: 28,
+      color: '#333',
+      textAlign: 'center',
+    },
+    lessonsGrid: {
+      marginTop: 20,
+      // marginHorizontal: 'auto',
+      // maxWidth: 800,
+      justifyContent: 'space-between',
+    },
+    lessonCard: {
+      flex: 1,
+      margin: 8,
+      alignItems: 'center',
+    },
+    lessonImage: {
+      width: '100%',
+      aspectRatio: 14 / 13,
+      borderRadius: 16,
+    },
+    lessonName: {
+      marginTop: 16,
+      fontSize: 18,
+      fontWeight: '600',
+      color: '#000',
+    },
+    lessonRole: {
+      fontSize: 16,
+      color: '#555',
+    },
+    lessonLocation: {
+      fontSize: 14,
+      color: '#777',
+    },
+    lessonButtonContainer: {
+      backgroundColor: '#4f46e5', // indigo-600
+      borderRadius: 8, // rounded-md
+      paddingHorizontal: 10, // px-2.5
+      paddingVertical: 6, // py-1.5
       alignItems: 'center',
       justifyContent: 'center',
     },
-
-    card: {
-      width: '45%',
-      height: 200,
-      margin: 8,
-      padding: 20,
-      borderRadius: 8,
-      backgroundColor: '#add8e6',
-      flexGrow: 'true'
+    lessonButtonContent: {
+      flexDirection: 'row', 
+      alignItems: 'center', 
+      gap: 6, // gap-x-1.5
+    },
+    lessonButtonText: {
+      color: '#ffffff', // text-white
+      fontSize: 14, // text-sm
+      fontWeight: '600', // font-semibold
+    },
+    lessonButtonIcon: {
+      marginRight: 6, // -ml-0.5
+    },
+    lessonButtonShadow: {
+      shadowColor: '#000', 
+      shadowOffset: { width: 0, height: 2 }, 
+      shadowOpacity: 0.25, 
+      shadowRadius: 3.84,
+      elevation: 5,
     },
     signInContainer: {
       flex: 1,

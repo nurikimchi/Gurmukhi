@@ -46,12 +46,6 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <Stack>
-          <Slot/>
-          <Stack.Screen name="index" />
-          <Stack.Screen name="feature"/>
-          <Stack.Screen name="profile"/>
-          <Stack.Screen name="settings"/>
-          <Stack.Screen name="leaderboard"/>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="signin" options={{title: 'Sign In'}}/>
           <Stack.Screen name="signup" options={{title: 'Sign Up'}}/>

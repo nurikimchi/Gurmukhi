@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import { GlobalStyles } from "./GlobalStyles";
 import { useRouter, useSegments } from "expo-router";
 
@@ -49,11 +49,43 @@ export default function SignUp() {
                         username: username,
                         uid: user.uid,
                         exp: 0,
-                        completedLevels: {
-                            '1': false,
-                            '1b': false,
-                            '1c': false,
-                        },
+                        completedLevels: [
+							{ੳ: false},
+							{ਅ: false},
+							{ੲ: false},
+							{ਸ: false},
+							{ਹ: false},
+							{ਕ: false},
+							{ਖ: false},
+							{ਗ: false},
+							{ਘ: false},
+							{ਙ: false},
+							{ਚ: false},
+							{ਛ: false},
+							{ਜ: false},
+							{ਝ: false},
+							{ਞ: false},
+							{ਟ: false},
+							{ਠ: false},
+							{ਡ: false},
+							{ਢ: false},
+							{ਣ: false},
+							{ਤ: false},
+							{ਥ: false},
+							{ਦ: false},
+							{ਧ: false},
+							{ਨ: false},
+							{ਪ: false},
+							{ਫ: false},
+							{ਬ: false},
+							{ਭ: false},
+							{ਮ: false},
+							{ਯ: false},
+							{ਰ: false},
+							{ਲ: false},
+							{ਵ: false},
+							{ੜ: false},
+						],
 						ranking: null,
 						avatarColor: avatarColor,
                         timestamp: serverTimestamp(),
@@ -93,7 +125,7 @@ export default function SignUp() {
 						<TextInput
 							style={!errorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
 							placeholder="Email address"
-							keyboardType="email-address"
+							inputMode="email-address"
 							autoCapitalize="none"
 							autoCompleteType="email"
 							onChangeText={(text) => setEmail(text)}
@@ -104,7 +136,7 @@ export default function SignUp() {
 						<TextInput
 							style={GlobalStyles.signInInput}
 							placeholder="Username"
-							keyboardType="ascii-capable"
+							inputMode="ascii-capable"
 							autoCapitalize="none"
 							autoCompleteType="username"
 							onChangeText={(text) => setUsername(text)}
@@ -133,14 +165,14 @@ export default function SignUp() {
 						/>
 					</View>
 
-					<TouchableOpacity
+					<Pressable
 						style={GlobalStyles.signInSubmitButton}
 						onPress={() => {
 							handleSignUp(email, password, username);
 						}}
 					>
 						<Text style={{ color: "#FFFFFF" }}>Sign in</Text>
-					</TouchableOpacity>
+					</Pressable>
 				</View>
 			</View>
 		</View>
