@@ -8,8 +8,8 @@ export default function ForgotPassword () {
     const auth = getAuth();
     const router = useRouter();
 
-    const handleRedirectForgotPassword = async (email, password) => {
-        router.navigate('/forgotpassword');
+    const handleCorrectEmail = async (email, password) => {
+        router.navigate('/emailsent');
     }
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -23,6 +23,7 @@ export default function ForgotPassword () {
         sendPasswordResetEmail(auth, email)
         .then(() => {
             setErrorExists(false)
+            handleCorrectEmail(auth, email)
         })
         .catch((error) => {
             setErrorExists(true)
@@ -32,7 +33,6 @@ export default function ForgotPassword () {
                     setErrorMessageUI("This email is not registered")
                 }
             }
-            console.log(errorMessageUI)
         });
     }
     return (
