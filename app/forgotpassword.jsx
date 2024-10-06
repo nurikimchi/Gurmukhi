@@ -22,12 +22,17 @@ export default function ForgotPassword () {
     function handlePasswordReset(auth, email) {
         sendPasswordResetEmail(auth, email)
         .then(() => {
+            setErrorExists(false)
         })
         .catch((error) => {
             setErrorExists(true)
-            //if (error.message) {
-                setErrorMessageUI(error.errorCode)
-            //}
+            if (error.message) {
+                setErrorMessageUI(error.message)
+                if (error.message=='Firebase: Error (auth/user-not-found).') {
+                    setErrorMessageUI("This email is not registered")
+                }
+            }
+            console.log(errorMessageUI)
         });
     }
     return (
@@ -40,7 +45,6 @@ export default function ForgotPassword () {
                 /> */}
                 <Text style={GlobalStyles.signInHeading}>Forgot Password?</Text>
             </View>
-
             <View style={GlobalStyles.signInInnerContainer}>
                 <View style={GlobalStyles.signInForm}>
                 <View style={GlobalStyles.signInFormField}>
@@ -53,8 +57,8 @@ export default function ForgotPassword () {
                         autoCompleteType="email"
                         onChangeText={text => setEmail(text)}
                     />
+                    {errorExists&&<Text style={{ color: '#F00' }}>{errorMessageUI}</Text>}
                 </View>
-
                 <Pressable style={GlobalStyles.signInSubmitButton} onPress={() => {handlePasswordReset(auth, email)}}>
                     <Text style={{ color: '#FFFFFF' }}>Recover Password</Text>
                 </Pressable>
