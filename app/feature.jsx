@@ -452,8 +452,8 @@ export default function Feature() {
         console.log("@handleCollectEXP")
         try {
             const docRef = doc(db, "users", currentUser.uid);
-            const docSnap = getDoc(docRef);
-
+            const docSnap = await getDoc(docRef);
+						let data = docSnap.data();
             getDoc(doc(db, "users", currentUser.uid)).then((docSnap) => {
                 const currentData = docSnap.data();
           
@@ -464,7 +464,7 @@ export default function Feature() {
                 updateDoc(docRef, {
                   exp: newEXP,
                 });
-
+								data.xp = newEXP;
                 const completedLevels = currentData.completedLevels;
 
                 const justCompletedLevel = completedLevels.findIndex(level => level.hasOwnProperty(itemLetter));
@@ -481,6 +481,7 @@ export default function Feature() {
 
                 // todo later, connect exp to a ui state that passes back up to Cards.jsx
                 console.log(`Updated experience to ${newEXP}`)
+								console.log(data.xp)
             });
 
             router.navigate('/')
