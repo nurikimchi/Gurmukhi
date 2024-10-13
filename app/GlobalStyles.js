@@ -204,6 +204,13 @@ export const GlobalStyles = StyleSheet.create(
       lineHeight: 24,
       color: '#1F2937', // text-gray-900
     },
+    confirmationText: {
+      fontSize: 20,
+      fontWeight: '700',
+      lineHeight: 24,
+      marginBottom: 10,
+      color: '#1F2937', // text-gray-900
+    },
     signInInput: {
       marginTop: 8,
       width: '100%',
