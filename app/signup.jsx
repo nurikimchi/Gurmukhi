@@ -18,7 +18,9 @@ export default function SignUp() {
 	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState("");
 
-    const [errorExists, setErrorExists] = useState(false);
+    const [emailErrorExists, setEmailErrorExists] = useState(false);
+	const [userErrorExists, setUserErrorExists] = useState(false);
+	const [passErrorExists, setPassErrorExists] = useState(false);
     const [errorMessageUI, setErrorMessageUI] = useState('');
     
 	const handleSignUp = async (email, password, username) => {
@@ -27,11 +29,19 @@ export default function SignUp() {
 			if (user.errorCode) {
 				console.log("Error:", user.errorCode, user.errorMessage);
 
-                setErrorExists(true);
                 switch(user.errorCode) {
                     case 'auth/invalid-email':
+						setEmailErrorExists(true);
                         setErrorMessageUI('Invalid email');
                         break;
+					case 'auth/invalid-user-import':
+						setUserErrorExists(true);
+						setErrorMessageUI('Invalid username');
+						break;
+					case 'auth/invalid-password':
+						setPassErrorExists(true);
+						setErrorMessageUI('Password too short');
+						break;
                     case 'auth/email-already-in-use':
                         setErrorMessageUI('Email is already in use');
                         break;
@@ -123,18 +133,23 @@ export default function SignUp() {
 							Email address
 						</Text>
 						<TextInput
-							style={!errorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
+							style={!emailErrorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
+							value = {email}
 							placeholder="Email address"
 							inputMode="email-address"
 							autoCapitalize="none"
 							autoCompleteType="email"
 							onChangeText={(text) => setEmail(text)}
 						/>
+
 					</View>
 					<View style={GlobalStyles.signInFormField}>
-						<Text style={GlobalStyles.signInLabel}>Username</Text>
+						<Text style={GlobalStyles.signInLabel}>
+							Username
+						</Text>
 						<TextInput
-							style={GlobalStyles.signInInput}
+							style={!userErrorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
+							value = {username}
 							placeholder="Username"
 							inputMode="ascii-capable"
 							autoCapitalize="none"
@@ -156,7 +171,8 @@ export default function SignUp() {
 							</Text>
 						</View>
 						<TextInput
-							style={GlobalStyles.signInInput}
+							style={!passErrorExists? GlobalStyles.signInInput : GlobalStyles.signInInputError}
+							value = {password}
 							placeholder="Password"
 							secureTextEntry
 							autoCapitalize="none"
