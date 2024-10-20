@@ -34,11 +34,11 @@ export default function SignUp() {
 						setEmailErrorExists(true);
                         setErrorMessageUI('Invalid email');
                         break;
-					case 'auth/invalid-user-import':
+					case 'auth/invalid-display-name':
 						setUserErrorExists(true);
 						setErrorMessageUI('Invalid username');
 						break;
-					case 'auth/invalid-password':
+					case 'auth/weak-password':
 						setPassErrorExists(true);
 						setErrorMessageUI('Password too short');
 						break;
@@ -116,6 +116,12 @@ export default function SignUp() {
 	return (
 		<View style={GlobalStyles.signInContainer}>
 			<View style={GlobalStyles.signInInnerContainer}>
+				{/* Display error message if exists */}
+				{errorMessageUI ? (
+						<Text style={{ color: 'red', marginBottom: 10 }}>
+							{errorMessageUI}
+						</Text>
+					) : null}
 				{/* <Image
                 source={{ uri: '' }}
                 style={GlobalStyles.signInLogo}
