@@ -478,6 +478,23 @@ export const GlobalStyles = StyleSheet.create(
       paddingHorizontal: 24,
       borderRadius: 4,
       width: '70%'
+    },
+    audioIcon: {
+      width: "35px",
+    },
+    audioIconDiv: {
+      position: 'absolute',
+      right: '10px',
+      top: '10px'
+    },
+    romanizationText: {
+      fontSize: "16px",
+      fontStyle: 'italic',
+      fontFamily: "system-ui",
+      color:"#222",
+      position: 'absolute',
+      marginTop: '3em',
+      whiteSpace: 'nowrap',
     }
   }
 )
